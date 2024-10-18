@@ -6,6 +6,7 @@ if(process.env.NODE_ENV != "production"){
 const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
+const mongo_url = "mongodb://127.0.0.1:27017/wanderlust"
 const dbUrl = process.env.ATLASDB_URL;
 const method_override = require("method-override");
 const ejs_mate = require("ejs-mate");
@@ -24,7 +25,7 @@ const userRouter = require("./routes/user.js")
 
 
 async function main() {
-  await mongoose.connect(dbUrl);
+  await mongoose.connect(mongo_url);
 }
 
 main()
@@ -35,7 +36,7 @@ main()
     console.log(err);
   });
   const store = MongoStore.create({
-    mongoUrl:dbUrl,
+    mongoUrl:mongo_url,
     crypto:{
      secret: process.env.SECRET
     },

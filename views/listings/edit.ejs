@@ -1,100 +1,101 @@
 <% layout('layouts/boilerplate') -%>
 <body>
-  <div class="row mt-3">
-    <div class="col-8 offset-2">
-      <h3>Edit your listing</h3>
-      <form class="needs-validation" action="/listings/<%= listing._id %>?_method=PUT" novalidate method="post" enctype="multipart/form-data">
-        <div class="mb-3">
-          <label for="title" class="form-label ">Title</label>
-          <input
-            name="listing[title]"
-            class="form-control"
-            value="<%=  listing.title%>"
-            placeholder="enter title"
-            type="text"
-            required
-          />
-          <div class="valid-feedback">
-            Looks good!
-          </div>
-        </div>
-
-        <div class="mb-3">
-          <label for="description" class="form-label">Description</label>
-          <textarea
-            name="listing[description]"
-            class="form-control"
-            placeholder="enter description"
-            required
-          >
-         <%=  listing.description%>
-        </textarea
-          >
-          <div class="valid-feedback">
-            Looks good!
-          </div>
-        </div>
-        <div class="mb-3">
-          <img src="<%= originalImageUrl %>" alt="">
-        </div><br>
-        <div class="mb-3">
-          <label for="image" class="form-label">Upload Image</label>
-          <input
-            name="listing[image]"
-            class="form-control"
-      
-            type="file"
-        
-          />
-
-        </div>
-        <div class="row">
-          <div class="mb-3 col-md-4">
-            <label for="price" class="form-label">Price</label>
+  <div class="container mt-3">
+    <div class="row">
+      <div class="col-12 col-md-8 offset-md-2">
+        <h3>Edit your listing</h3>
+        <form class="needs-validation" action="/listings/<%= listing._id %>?_method=PUT" novalidate method="post" enctype="multipart/form-data">
+          
+          <!-- Title -->
+          <div class="mb-3">
+            <label for="title" class="form-label">Title</label>
             <input
+              name="listing[title]"
               class="form-control"
-              name="listing[price]"
-              value="<%=  listing.price%>"
-              placeholder="enter price"
-              type="number"
-              required
-            />
-            <div class="invalid-feedback"> please enter price </div>
-
-          </div>
-
-          <div class="mb-3 col-md-8">
-            <label for="country" class="form-label col-md-4">Country</label>
-            <input
-              class="form-control"
-              name="listing[country]"
-              value="<%=  listing.country%>"
-              placeholder="enter country"
+              value="<%= listing.title %>"
+              placeholder="enter title"
               type="text"
               required
             />
-            <div class="invalid-feedback"> please enter country </div>
-
+            <div class="valid-feedback">Looks good!</div>
           </div>
-        </div>
-        <div class="mb-3">
-          <label for="location" class="form-label">Location</label>
 
-          <input
-            name="listing[location]"
-            class="form-control"
-            value="<%=  listing.location%>"
-            placeholder="enter location"
-            type="text"
-            required
-          />
-          <div class="invalid-feedback">
-           please enter location </div>
-        </div>
+          <!-- Description -->
+          <div class="mb-3">
+            <label for="description" class="form-label">Description</label>
+            <textarea
+              name="listing[description]"
+              class="form-control"
+              placeholder="enter description"
+              required
+            ><%= listing.description %></textarea>
+            <div class="valid-feedback">Looks good!</div>
+          </div>
 
-        <button class="btn btn-dark edit-btn mb-3">Edit</button>
-      </form>
+          <!-- Image Display -->
+          <div class="mb-3">
+            <img src="<%= originalImageUrl %>" alt="Listing Image" class="img-fluid">
+          </div>
+
+          <!-- Image Upload -->
+          <div class="mb-3">
+            <label for="image" class="form-label">Upload Image</label>
+            <input
+              name="listing[image]"
+              class="form-control"
+              type="file"
+            />
+          </div>
+
+          <!-- Price and Country -->
+          <div class="row mb-3">
+            <div class="col-12 col-md-4">
+              <label for="price" class="form-label">Price</label>
+              <input
+                class="form-control"
+                name="listing[price]"
+                value="<%= listing.price %>"
+                placeholder="enter price"
+                type="number"
+                required
+              />
+              <div class="invalid-feedback">Please enter price</div>
+            </div>
+
+            <div class="col-12 col-md-8">
+              <label for="country" class="form-label">Country</label>
+              <input
+                class="form-control"
+                name="listing[country]"
+                value="<%= listing.country %>"
+                placeholder="enter country"
+                type="text"
+                required
+              />
+              <div class="invalid-feedback">Please enter country</div>
+            </div>
+          </div>
+
+          <!-- Location -->
+          <div class="mb-3">
+            <label for="location" class="form-label">Location</label>
+            <input
+              name="listing[location]"
+              class="form-control"
+              value="<%= listing.location %>"
+              placeholder="enter location"
+              type="text"
+              required
+            />
+            <div class="invalid-feedback">Please enter location</div>
+          </div>
+
+          <!-- Submit Button -->
+          <button class="btn btn-dark w-100 edit-btn mb-3">Edit</button>
+        </form>
+      </div>
     </div>
   </div>
   <script src="/js/script.js"></script>
+  
 </body>
