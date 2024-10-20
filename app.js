@@ -25,7 +25,7 @@ const userRouter = require("./routes/user.js")
 
 
 async function main() {
-  await mongoose.connect(dbUrl);
+  await mongoose.connect(mongo_url);
 }
 
 main()
@@ -36,7 +36,7 @@ main()
     console.log(err);
   });
   const store = MongoStore.create({
-    mongoUrl:dbUrl,
+    mongoUrl:mongo_url,
     crypto:{
      secret: process.env.SECRET
     },
