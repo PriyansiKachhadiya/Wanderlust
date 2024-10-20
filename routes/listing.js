@@ -27,6 +27,14 @@ router.route("/")
   validateListing,
   wrapAsync(listingController.createListing)
 );
+// filter route
+router.get("/filter/:filter",
+  wrapAsync(listingController.filterListing)
+);
+// search route
+router.get("/search",
+ wrapAsync(listingController.searchListing)
+);
 
 // New route
 router.get(
@@ -64,6 +72,7 @@ router.get(
   isOwner,
   wrapAsync(listingController.renderEditform)
 );
+
 
 module.exports = router;
 

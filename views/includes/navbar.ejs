@@ -9,10 +9,10 @@
           <a class="nav-link" id="explore-nav-link" href="/listings">Explore</a>
         </div>
         <div id="navbar-box-form">
-          <form class="d-flex" role="search">
+          <form class="d-flex" role="search" action="/listings/search">
             <input
               class="form-control me-2 search-input"
-              type="search"
+              type="search" name="query"
               placeholder="Search destination"
             />
             <button class="btn search-btn" type="submit">
@@ -44,10 +44,10 @@
     </div>
 
     <div class="navbar-nav nav-form ms-auto">
-      <form class="d-flex" role="search">
+      <form class="d-flex" action="/listings/search" role="search">
         <input
           class="form-control me-2 search-input"
-          type="search"
+          type="search" name="query"
           placeholder="Search destination"
         />
         <button class="btn search-btn" type="submit">

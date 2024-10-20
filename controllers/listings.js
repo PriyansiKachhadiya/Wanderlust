@@ -1,12 +1,24 @@
 const Listing = require("../models/listing.js")
 module.exports.index = async (req, res, next) => {
     const alllisting = await Listing.find({});
-    res.render("listings/index.ejs", { alllisting });
+    res.render("listings/index.ejs", { alllisting ,searchedListing: null,filteredListing:null});
   };
 
 module.exports.renderNewForm = (req, res, next) => {
   res.render("listings/new.ejs");
 }  ;
+module.exports.searchListing = async(req,res,next)=>{
+  const searchquery = req.query.query;
+  const searchedListing = await Listing.find({title: { $regex: `${searchquery}`, $options: 'i' }});
+  res.render("listings/index.ejs", { searchedListing , alllisting: null ,filteredListing:null });
+}
+
+module.exports.filterListing = async(req,res,next)=>{
+  const filter = req.params;
+  const filteredListing = await Listing.find(filter);
+  console.log(filteredListing);
+  res.render("listings/index.ejs",{filteredListing,searchedListing:null,alllisting:null});
+}
 
 module.exports.createListing = async (req, res, next) => {
   let url = req.file.path;
@@ -38,6 +50,7 @@ module.exports.updateListing = async (req, res, next) => {
 
   let { id } = req.params;
   const updatedData = { ...req.body.listing };
+  console.log(updatedData);
   const listing=  await Listing.findByIdAndUpdate(id, updatedData); // Perform the update
 
   if(typeof req.file !== "undefined"){
@@ -78,3 +91,4 @@ module.exports.showListing = async (req, res, next) => {
     res.render("listings/show.ejs", {listing, newLocation:listing.location, });
   }
 }
+

@@ -35,6 +35,23 @@ const listingSchema = new Schema({
         ref:"User"
 
     },
+    filter:{
+        type:String,
+        enum: [
+            'Trending',
+            'Rooms',
+            'Iconic cities',
+            'Mountains',
+            'Castles',
+            'Amazing Pools',
+            'Camping',
+            'Farms',
+            'Arctic',
+            'Domes',
+            'Boats',
+          ],
+          required: true,
+    }
 
     // geometry:{
     //     type:{
