@@ -1,2 +1,2 @@
-# wanderlust_
+# wanderlust
 Airbnb clone -- FULL STACK
